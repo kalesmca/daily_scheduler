@@ -8,8 +8,8 @@ const menuItems = [
     icon: "▦",
   },
   {
-    label: "Users",
-    path: "/users",
+    label: "Scheduler List",
+    path: "/list",
     icon: "♙",
   },
   {

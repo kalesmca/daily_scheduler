@@ -7,8 +7,8 @@ import {
 
 
 import Dashboard from "./pages/dashboard/Dashboard";
-import Users from "./pages/users/Users";
-import Reports from "./pages/users/Users";
+import TodoList from "./pages/todo-list/TodoList";
+import Reports from "./pages/todo-list/TodoList";
 import Settings from "./pages/settings/Settings";
 import NotFound from "./pages/notFound/NotFount";
 import Layout from './Layout';
@@ -24,7 +24,7 @@ function App() {
           />
 
           <Route path="dashboard" element={<Dashboard />} />
-          <Route path="users" element={<Users />} />
+          <Route path="list" element={<TodoList />} />
           <Route path="reports" element={<Reports />} />
           <Route path="settings" element={<Settings />} />
 

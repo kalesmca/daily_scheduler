@@ -1,4 +1,4 @@
-function Users() {
+function TodoList() {
   return (
     <section>
       <h1>Users</h1>
@@ -7,4 +7,4 @@ function Users() {
   );
 }
 
-export default Users;
+export default TodoList;

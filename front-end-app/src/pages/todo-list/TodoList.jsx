@@ -8,21 +8,6 @@ import {
   deleteTask
 } from "../../redux/actions/taskAction";
 
-const initialTasks = [
-  {
-    createdAt: "2026-10-31T17:33:10",
-    description: "Complete Spring Boot CRUD application",
-    endTime: "11:00:00",
-    id: 1,
-    priority: "HIGH",
-    scheduledDate: "2026-11-01",
-    startTime: "09:00:00",
-    status: "PENDING",
-    title: "Learn Spring Boot",
-    updatedAt: "2026-10-31T17:33:10",
-  },
-];
-
 const formatDate = (date) =>
   new Date(`${date}T00:00:00`).toLocaleDateString("en-IN", {
     day: "2-digit",
@@ -113,9 +98,9 @@ const closeModal = () => {
   const handleUpdateTask = (e) => {
     e.preventDefault();
 
-    setTasks((prev) =>
-      prev.map((task) => (task.id === formData.id ? { ...formData } : task)),
-    );
+    // setTasks((prev) =>
+    //   prev.map((task) => (task.id === formData.id ? { ...formData } : task)),
+    // );
 
     closeTaskDetails();
   };
@@ -134,16 +119,24 @@ const closeModal = () => {
   }, [tasks, search, statusFilter]);
 
   const handleDelete = (id) => {
-    if (window.confirm("Are you sure you want to delete this task?")) {
-      setTasks((prev) => prev.filter((task) => task.id !== id));
-    }
+    // if (window.confirm("Are you sure you want to delete this task?")) {
+    //   setTasks((prev) => prev.filter((task) => task.id !== id));
+    // }
+    dispatch(deleteTask(id))
   };
 
   const handleStatusChange = (id, status) => {
-    setTasks((prev) =>
-      prev.map((task) => (task.id === id ? { ...task, status } : task)),
-    );
+    // setTasks((prev) =>
+    //   prev.map((task) => (task.id === id ? { ...task, status } : task)),
+    // );
   };
+
+  const saveTask = () =>{
+    formData?.id? dispatch(updateTask(formData)) : dispatch(createTask(formData));
+    setIsModalOpen(false);
+    setFormData({ ...emptyTask });
+
+  }
 
   return (
     <div className="task-page">
@@ -456,7 +449,7 @@ const closeModal = () => {
               <span>✎</span> Edit Task
             </button>
           ) : (
-            <button type="submit" className="save-btn">
+            <button type="submit" className="save-btn" onClick={()=> {saveTask()}}>
               Save Changes
             </button>
           )}
